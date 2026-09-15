@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Offline aplikace pro správu nouzových zásob."
+    >
+
+    <title>Zásoby | Dashboard</title>
+
+    <!-- Hlavní styl aplikace -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Budoucí doplňkové styly -->
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- Boční menu -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-logo">Z</div>
+
+                <div class="brand-text">
+                    <h1>ZÁSOBY</h1>
+                    <span>Nouzový tracker</span>
+                </div>
+            </div>
+
+            <nav class="navigation">
+
+                <a
+                    href="index.html"
+                    class="navigation-item active"
+                >
+                    <span class="navigation-icon">▣</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="pages/inventory.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">📦</span>
+                    <span>Moje zásoby</span>
+                </a>
+
+                <a
+                    href="pages/statistics.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">📈</span>
+                    <span>Statistiky</span>
+                </a>
+
+                <div class="navigation-label">
+                    APLIKACE
+                </div>
+
+                <a
+                    href="pages/settings.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">⚙️</span>
+                    <span>Nastavení</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                <span>Offline režim</span>
+            </div>
+
+        </aside>
+
+        <!-- Hlavní obsah -->
+        <main class="main-content">
+
+            <!-- Horní lišta -->
+            <header class="topbar">
+
+                <div class="topbar-heading">
+                    <p class="eyebrow">PŘEHLED SYSTÉMU</p>
+                    <h2>Dashboard</h2>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        title="Přepnout vzhled"
+                        aria-label="Přepnout vzhled"
+                    >
+                        ☀️
+                    </button>
+
+                    <a
+                        href="pages/settings.html"
+                        class="icon-button"
+                        title="Nastavení"
+                        aria-label="Nastavení"
+                    >
+                        ⚙️
+                    </a>
+
+                </div>
+
+            </header>
+
+            <!-- Úvodní panel -->
+            <section class="welcome-panel">
+
+                <div class="welcome-content">
+
+                    <p class="eyebrow">
+                        NOUZOVÉ ZÁSOBY
+                    </p>
+
+                    <h1>
+                        Mějte přehled o tom,
+                        <span>co máte připravené.</span>
+                    </h1>
+
+                    <p class="welcome-text">
+                        Sledujte množství zásob, expirace
+                        a připravenost domácnosti.
+                    </p>
+
+                    <a
+                        href="pages/inventory.html"
+                        class="primary-button"
+                    >
+                        📦 Spravovat zásoby
+                    </a>
+
+                </div>
+
+                <div class="welcome-icon">
+                    🛡️
+                </div>
+
+            </section>
+
+            <!-- Statistiky -->
+            <section class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+                        <span>Celkové množství</span>
+                        <span class="stat-icon">📦</span>
+                    </div>
+
+                    <strong id="totalQuantity">0</strong>
+
+                    <small>
+                        kusů / jednotek
+                    </small>
+
+                </article>
+
+                <article class="stat-card">
+
+                    <div class="stat-card-top">
+                        <span>Typy zásob</span>
+                        <span class="stat-icon">🗂️</span>
+                    </div>
+
+                    <strong id="totalItems">0</strong>
+
+                    <small>
+                        uložených položek
+                    </small>
+
+                </article>
+
+                <article class="stat-card warning">
+
+                    <div class="stat-card-top">
+                        <span>Brzy expiruje</span>
+                        <span class="stat-icon">⏰</span>
+                    </div>
+
+                    <strong id="expiringItems">0</strong>
+
+                    <small>
+                        do 30 dnů
+                    </small>
+
+                </article>
+
+                <article class="stat-card danger">
+
+                    <div class="stat-card-top">
+                        <span>Po expiraci</span>
+                        <span class="stat-icon">⚠️</span>
+                    </div>
+
+                    <strong id="expiredItems">0</strong>
+
+                    <small>
+                        vyžaduje kontrolu
+                    </small>
+
+                </article>
+
+            </section>
+
+            <!-- Přehled kategorií a upozornění -->
+            <section class="dashboard-grid">
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">
+                                KATEGORIE
+                            </p>
+
+                            <h3>
+                                Rozložení zásob
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="categoryOverview"
+                        class="overview-list"
+                    >
+                        <div class="empty-state">
+                            Zatím nejsou přidané žádné zásoby.
+                        </div>
+                    </div>
+
+                </article>
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">
+                                UPOZORNĚNÍ
+                            </p>
+
+                            <h3>
+                                Kontrola zásob
+                            </h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="alertsOverview"
+                        class="overview-list"
+                    >
+                        <div class="empty-state">
+                            Žádná aktuální upozornění.
+                        </div>
+                    </div>
+
+                </article>
+
+            </section>
+
+            <!-- Poslední zásoby -->
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">
+                            POSLEDNÍ AKTIVITA
+                        </p>
+
+                        <h3>
+                            Poslední přidané zásoby
+                        </h3>
+                    </div>
+
+                    <a
+                        href="pages/inventory.html"
+                        class="text-link"
+                    >
+                        Zobrazit vše →
+                    </a>
+
+                </div>
+
+                <div
+                    id="recentSupplies"
+                    class="overview-list"
+                >
+                    <div class="empty-state">
+                        Zatím nejsou přidané žádné zásoby.
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Společné JS -->
+    <script src="js/storage.js"></script>
+    <script src="script.js"></script>
+
+    <!-- JS pro dashboard -->
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

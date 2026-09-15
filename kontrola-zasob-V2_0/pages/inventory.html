@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Moje zásoby | Zásoby</title>
+
+    <!-- Hlavní vzhled -->
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Budoucí společné styly -->
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-theme="dark">
+
+    <div class="app-layout">
+
+        <!-- =====================================
+             POSTRANNÍ MENU
+        ====================================== -->
+
+        <aside class="sidebar">
+
+             <div class="brand">
+                <div class="brand-logo">Z</div>
+
+                <div class="brand-text">
+                    <h1>ZÁSOBY</h1>
+                    <span>Nouzový tracker</span>
+                </div>
+            </div>
+
+
+            <nav class="navigation">
+
+                <a
+                    href="../index.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="inventory.html"
+                    class="navigation-item active"
+                >
+                    <span class="navigation-icon">▤</span>
+                    <span>Moje zásoby</span>
+                </a>
+
+                <a
+                    href="statistics.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">◩</span>
+                    <span>Statistiky</span>
+                </a>
+
+                <a
+                    href="settings.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">⚙</span>
+                    <span>Nastavení</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Systém připraven
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================
+             HLAVNÍ OBSAH
+        ====================================== -->
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">INVENTORY CONTROL</p>
+
+                    <h2>Moje zásoby</h2>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        title="Přepnout vzhled"
+                        aria-label="Přepnout vzhled"
+                    >
+                        ☀️
+                    </button>
+
+                    <a
+                        href="pages/settings.html"
+                        class="icon-button"
+                        title="Nastavení"
+                        aria-label="Nastavení"
+                    >
+                        ⚙️
+                    </a>
+
+                </div>
+            </header>
+
+
+            <section class="page-intro">
+
+                <div>
+                    <p class="eyebrow">PŘEHLED INVENTÁŘE</p>
+
+                    <h1>Evidence zásob</h1>
+
+                    <p>
+                        Přehled všech uložených položek,
+                        jejich množství a data spotřeby.
+                    </p>
+                </div>
+
+                <button
+                    id="addItemButton"
+                    class="primary-button"
+                    type="button"
+                >
+                    + Přidat zásobu
+                </button>
+
+            </section>
+
+
+            <!-- =================================
+                 FILTRY
+            ================================== -->
+
+            <section class="panel inventory-toolbar">
+
+                <div class="form-group">
+
+                    <label for="searchInput">
+                        Hledat
+                    </label>
+
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="Název zásoby..."
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="categoryFilter">
+                        Kategorie
+                    </label>
+
+                    <select id="categoryFilter">
+
+                        <option value="all">
+                            Všechny kategorie
+                        </option>
+
+                        <option value="food">
+                            Potraviny
+                        </option>
+
+                        <option value="water">
+                            Voda
+                        </option>
+
+                        <option value="medicine">
+                            Léky
+                        </option>
+
+                        <option value="equipment">
+                            Vybavení
+                        </option>
+
+                        <option value="other">
+                            Ostatní
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 TABULKA ZÁSOB
+            ================================== -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">ULOŽENÉ POLOŽKY</p>
+
+                        <h3>Seznam zásob</h3>
+                    </div>
+
+                    <span
+                        id="inventoryCount"
+                        class="panel-badge"
+                    >
+                        0 položek
+                    </span>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="inventory-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Název</th>
+                                <th>Kategorie</th>
+                                <th>Množství</th>
+                                <th>Spotřeba do</th>
+                                <th>Stav</th>
+                                <th>Akce</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="inventoryTableBody">
+
+                            <tr>
+                                <td colspan="6">
+                                    Zatím nejsou přidány žádné zásoby.
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 FORMULÁŘ PRO NOVOU ZÁSOBU
+            ================================== -->
+
+            <section
+                id="inventoryFormPanel"
+                class="panel form-panel hidden"
+            >
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">NOVÁ POLOŽKA</p>
+
+                        <h3>Přidat zásobu</h3>
+                    </div>
+
+                </div>
+
+
+                <form id="inventoryForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="itemName">
+                                Název zásoby
+                            </label>
+
+                            <input
+                                id="itemName"
+                                name="name"
+                                type="text"
+                                placeholder="Např. Rýže"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemCategory">
+                                Kategorie
+                            </label>
+
+                            <select
+                                id="itemCategory"
+                                name="category"
+                                required
+                            >
+
+                                <option value="food">
+                                    Potraviny
+                                </option>
+
+                                <option value="water">
+                                    Voda
+                                </option>
+
+                                <option value="medicine">
+                                    Léky
+                                </option>
+
+                                <option value="equipment">
+                                    Vybavení
+                                </option>
+
+                                <option value="other">
+                                    Ostatní
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemQuantity">
+                                Množství
+                            </label>
+
+                            <input
+                                id="itemQuantity"
+                                name="quantity"
+                                type="number"
+                                min="0"
+                                step="any"
+                                placeholder="0"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemUnit">
+                                Jednotka
+                            </label>
+
+                            <select
+                                id="itemUnit"
+                                name="unit"
+                            >
+
+                                <option value="ks">
+                                    ks
+                                </option>
+
+                                <option value="l">
+                                    litrů
+                                </option>
+
+                                <option value="kg">
+                                    kg
+                                </option>
+
+                                <option value="g">
+                                    g
+                                </option>
+
+                                <option value="bal">
+                                    balení
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemExpirationDate">
+                                Datum spotřeby
+                            </label>
+
+                            <input
+                                id="itemExpirationDate"
+                                name="expirationDate"
+                                type="date"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemNote">
+                                Poznámka
+                            </label>
+
+                            <input
+                                id="itemNote"
+                                name="note"
+                                type="text"
+                                placeholder="Volitelná poznámka"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            id="cancelItemButton"
+                            class="secondary-button"
+                            type="button"
+                        >
+                            Zrušit
+                        </button>
+
+                        <button
+                            class="primary-button"
+                            type="submit"
+                        >
+                            Uložit zásobu
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script src="../js/storage.js"></script>
+    <script src="../script.js"></script>
+
+    <!-- Budoucí logika stránky -->
+    <script src="../js/inventory.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nastavení | Zásoby</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-theme="dark">
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+
+             <div class="brand">
+                <div class="brand-logo">Z</div>
+
+                <div class="brand-text">
+                    <h1>ZÁSOBY</h1>
+                    <span>Nouzový tracker</span>
+                </div>
+            </div>
+
+
+            <nav class="navigation">
+
+                <a
+                    href="../index.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="inventory.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">▤</span>
+                    <span>Moje zásoby</span>
+                </a>
+
+                <a
+                    href="statistics.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">◩</span>
+                    <span>Statistiky</span>
+                </a>
+
+                <a
+                    href="settings.html"
+                    class="navigation-item active"
+                >
+                    <span class="navigation-icon">⚙</span>
+                    <span>Nastavení</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Systém připraven
+            </div>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">SYSTEM CONFIGURATION</p>
+                    <h2>Nastavení</h2>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        title="Přepnout vzhled"
+                        aria-label="Přepnout vzhled"
+                    >
+                        ☀️
+                    </button>
+
+                    <a
+                        href="pages/settings.html"
+                        class="icon-button"
+                        title="Nastavení"
+                        aria-label="Nastavení"
+                    >
+                        ⚙️
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <section class="page-intro">
+
+                <div>
+                    <p class="eyebrow">KONFIGURACE A DATA</p>
+
+                    <h1>Nastavení aplikace</h1>
+
+                    <p>
+                        Správa vzhledu a uložených dat aplikace.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">VZHLED</p>
+                        <h3>Nastavení vzhledu</h3>
+                    </div>
+
+                </div>
+
+                <div class="settings-row">
+
+                    <div>
+                        <strong>Motiv aplikace</strong>
+
+                        <p class="panel-description">
+                            Přepnutí mezi tmavým a světlým vzhledem.
+                        </p>
+                    </div>
+
+                    <button
+                        id="settingsThemeToggle"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Přepnout vzhled
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">ÚLOŽIŠTĚ</p>
+                        <h3>Správa uložených dat</h3>
+                    </div>
+
+                </div>
+
+                <div class="settings-row">
+
+                    <div>
+                        <strong>Vymazat všechny zásoby</strong>
+
+                        <p class="panel-description">
+                            Tato akce odstraní všechny zásoby
+                            uložené v tomto prohlížeči.
+                        </p>
+                    </div>
+
+                    <button
+                        id="clearInventoryButton"
+                        class="danger-button"
+                        type="button"
+                    >
+                        Vymazat data
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">INFORMACE</p>
+                        <h3>O aplikaci</h3>
+                    </div>
+
+                </div>
+
+                <p class="panel-description">
+                    Zásoby je offline aplikace pro evidenci
+                    nouzových zásob. Data se ukládají pouze
+                    do místního úložiště tohoto prohlížeče.
+                </p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/storage.js"></script>
+    <script src="../script.js"></script>
+    <script src="../js/settings.js"></script>
+
+</body>
+</html>

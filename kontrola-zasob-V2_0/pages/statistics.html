@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Statistiky | Zásoby</title>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body data-theme="dark">
+
+    <div class="app-layout">
+
+        <!-- POSTRANNÍ MENU -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                 <div class="brand">
+                    <div class="brand-logo">Z</div>
+
+                    <div class="brand-text">
+                        <h1>ZÁSOBY</h1>
+                        <span>Nouzový tracker</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <nav class="navigation">
+
+                <a
+                    href="../index.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a
+                    href="inventory.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">▤</span>
+                    <span>Moje zásoby</span>
+                </a>
+
+                <a
+                    href="statistics.html"
+                    class="navigation-item active"
+                >
+                    <span class="navigation-icon">◩</span>
+                    <span>Statistiky</span>
+                </a>
+
+                <a
+                    href="settings.html"
+                    class="navigation-item"
+                >
+                    <span class="navigation-icon">⚙</span>
+                    <span>Nastavení</span>
+                </a>
+
+            </nav>
+
+
+            <div class="sidebar-footer">
+                <span class="status-dot"></span>
+                Systém připraven
+            </div>
+
+        </aside>
+
+
+        <!-- HLAVNÍ OBSAH -->
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div>
+                    <p class="eyebrow">DATA ANALYSIS</p>
+                    <h2>Statistiky</h2>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        title="Přepnout vzhled"
+                        aria-label="Přepnout vzhled"
+                    >
+                        ☀️
+                    </button>
+
+                    <a
+                        href="pages/settings.html"
+                        class="icon-button"
+                        title="Nastavení"
+                        aria-label="Nastavení"
+                    >
+                        ⚙️
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <section class="page-intro">
+
+                <div>
+                    <p class="eyebrow">ANALÝZA ZÁSOB</p>
+
+                    <h1>Přehled statistik</h1>
+
+                    <p>
+                        Zde později uvidíš podrobné statistiky
+                        o množství, kategoriích a expiraci zásob.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <section class="panel-grid">
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">MNOŽSTVÍ</p>
+                            <h3>Celkové množství</h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="statisticsTotalQuantity"
+                        class="large-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="panel-description">
+                        Součet všech evidovaných položek.
+                    </p>
+
+                </section>
+
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="eyebrow">POLOŽKY</p>
+                            <h3>Počet zásob</h3>
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="statisticsTotalItems"
+                        class="large-number"
+                    >
+                        0
+                    </div>
+
+                    <p class="panel-description">
+                        Celkový počet uložených položek.
+                    </p>
+
+                </section>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">KATEGORIE</p>
+                        <h3>Rozložení zásob</h3>
+                    </div>
+
+                </div>
+
+                <div id="statisticsCategories">
+
+                    <p class="empty-state">
+                        Statistiky se připravují.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="eyebrow">EXPIRACE</p>
+                        <h3>Stav spotřeby</h3>
+                    </div>
+
+                </div>
+
+                <div id="statisticsExpiration">
+
+                    <p class="empty-state">
+                        Statistiky expirace se připravují.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/storage.js"></script>
+    <script src="../script.js"></script>
+
+    <!-- Budoucí logika statistik -->
+    <script src="../js/statistics.js"></script>
+
+</body>
+</html>
